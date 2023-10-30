@@ -62,6 +62,10 @@ DerivedData/
 *.xcodeproj
 *.xcworkspace
 
+### Package ###
+/.build
+.swiftpm
+
 ### Tuist derived files ###
 graph.dot
 Derived/
