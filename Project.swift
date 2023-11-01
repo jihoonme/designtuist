@@ -1,29 +1,18 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
-import MyPlugin
+import TuistUI
 
-/*
-                +-------------+
-                |             |
-                |     App     | Contains TuistTemplate App target and TuistTemplate unit-test target
-                |             |
-         +------+-------------+-------+
-         |         depends on         |
-         |                            |
- +----v-----+                   +-----v-----+
- |          |                   |           |
- |   Kit    |                   |     UI    |   Two independent frameworks to share code and start modularising your app
- |          |                   |           |
- +----------+                   +-----------+
+@Project
+struct TuistApp: Module {
+    var body: some Module {
+        Project {
+            
+        }
+    }
+}
 
- */
 
-// MARK: - Project
-
-// Local plugin loaded
-let localHelper = LocalHelper(name: "MyPlugin")
-
-// Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.app(name: "TuistTemplate",
-                          platform: .iOS,
-                          additionalTargets: ["TuistTemplateKit", "TuistTemplateUI"])
+//// Creates our project using a helper function defined in ProjectDescriptionHelpers
+//let project = Project.app(name: "TuistTemplate",
+//                          platform: .iOS,
+//                          additionalTargets: ["TuistTemplateKit", "TuistTemplateUI"])
