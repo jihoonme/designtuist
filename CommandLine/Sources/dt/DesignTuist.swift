@@ -1,3 +1,2 @@
 import ArgumentParser
 
-print("Hello")
