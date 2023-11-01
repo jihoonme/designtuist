@@ -11,34 +11,33 @@ var targets: [Target] = [
         dependencies: [
             "DesignTuistKit",
             argumentParserDependency
-        ],
-        path: "CommandLine/Sources/dt"
+        ]
     ),
     .target(
         name: "DesignTuistKit",
         dependencies: [
             swiftToolsSupportDependency,
-            argumentParserDependency
-        ],
-        path: "CommandLine/Sources/DesignTuistKit"
+            argumentParserDependency,
+            "DesignTuistSupport"
+        ]
     ),
     .target(
         name: "DesignTuistSupport",
         dependencies: [
             swiftToolsSupportDependency,
-            argumentParserDependency
-        ],
-        path: "CommandLine/Sources/DesignTuistKit"
+            argumentParserDependency,
+            loggingDependency
+        ]
     ),
     .testTarget(
         name: "DesignTuistCLITests",
-        dependencies: ["dt"],
-        path: "CommandLine/Tests"
+        dependencies: ["dt"]
     ),
 ]
 
 let package = Package(
     name: "designtuist",
+    platforms: [.macOS(.v12)],
     products: [
         .executable(name: "dt", targets: ["dt"]),
         .library(name: "DesignTuistKit", targets: ["DesignTuistKit"])
