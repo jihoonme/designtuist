@@ -1,3 +1,0 @@
-import ProjectDescriptionHelpers
-import ProjectDescription
-
