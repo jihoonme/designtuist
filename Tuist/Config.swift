@@ -2,7 +2,6 @@ import ProjectDescription
 
 let config = Config(
     plugins: [
-        .local(path: .relativeToManifest("../../Plugins/TuistTemplate")),
-        .local(path: .relativeToRoot("/Plugins/"))
+        .git(url: "https://github.com/Jihoonahn/tuistui", tag: "0.1.1")
     ]
 )
