@@ -1,8 +1,12 @@
-//
-//  ConfigurationValues.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by Jihoonahn on 12/12/23.
-//
+import ProjectDescription
+import Configuration
 
-import Foundation
+extension ConfigurationValues {
+    var `default`: [ProjectDescription.Configuration] {
+        ConfigurationGroup {
+            Debug(AppConfiguration.dev)
+            Release(AppConfiguration.stage)
+            Release(AppConfiguration.prod)
+        }
+    }
+}

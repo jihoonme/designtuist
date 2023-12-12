@@ -1,8 +1,8 @@
-//
-//  TuistUIExtension.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by Jihoonahn on 12/6/23.
-//
+import TuistUI
 
-import Foundation
+public extension TuistUI.Project {
+    @inlinable
+    func environment(_ environment: AppEnvironment) -> Self {
+        return self
+    }
+}

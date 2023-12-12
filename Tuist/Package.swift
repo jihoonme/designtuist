@@ -1,8 +1,7 @@
-//
-//  Package.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by Jihoonahn on 12/12/23.
-//
+// swift-tools-version: 5.9
+import PackageDescription
 
-import Foundation
+let package = Package(
+    name: "PackageName",
+    dependencies: []
+)

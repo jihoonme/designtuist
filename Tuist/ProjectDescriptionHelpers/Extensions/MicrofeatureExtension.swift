@@ -1,8 +1,8 @@
-//
-//  MicrofeatureExtensions.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by Jihoonahn on 12/6/23.
-//
+import Microfeature
 
-import Foundation
+public extension Microfeature.TargetSpec {
+    @inlinable
+    func environment() -> Self {
+        return self
+    }
+}

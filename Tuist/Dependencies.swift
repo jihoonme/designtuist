@@ -1,8 +1,11 @@
-//
-//  Dependencies.swift
-//  Config
-//
-//  Created by Jihoonahn on 12/12/23.
-//
+import ProjectDescription
+import ProjectDescriptionHelpers
 
-import Foundation
+let dependencies = Dependencies(
+    swiftPackageManager: SwiftPackageManagerDependencies(
+        baseSettings: .settings(
+            configurations: AppEnvironment().appConfiguration
+        )
+    ),
+    platforms: AppEnvironment().packageplatform
+)
