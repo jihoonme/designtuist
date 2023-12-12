@@ -15,11 +15,19 @@ struct DesignTuistApp: Module {
                 destinations: env.destinations,
                 product: .app,
                 bundleId: "\(env.organizationName).\(typeName)",
-                deploymentTargets: env.deploymentTargets
+                deploymentTargets: env.deploymentTargets,
+                infoPlist: .file(path: "Support/Info.plist"),
+                sources: ["Sources/**"],
+                resources: ["Resources/**"],
+                settings: .settings(base: env.base)
             )
         }
         .organizationName(env.organizationName)
-        .settings(.settings(configurations: env.appConfiguration))
+        .settings(.settings(
+            base: env.base,
+            configurations: env.appConfiguration,
+            defaultSettings: .recommended
+        ))
         .scheme {
             Scheme.allSchemes(for: [typeName])
         }
