@@ -1,1 +1,2 @@
-import 
+import Foundation
+import Logging
