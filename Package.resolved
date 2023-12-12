@@ -5,8 +5,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pelagornis/plcommand",
       "state" : {
-        "revision" : "511bc3b28538b2ab72fdb249e80ae83cb0fcc6b6",
-        "version" : "1.2.1"
+        "revision" : "22e70a10fe7d35cca32c6c0c5eea32c28cade557",
+        "version" : "1.2.5"
+      }
+    },
+    {
+      "identity" : "plfile",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pelagornis/plfile",
+      "state" : {
+        "revision" : "70c83ad49250764c57a705e2f65873e3ada0dec4",
+        "version" : "1.0.6"
       }
     },
     {

@@ -47,7 +47,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.3"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
         .package(url: "https://github.com/apple/swift-log", from: "1.5.3"),
-        .package(url: "https://github.com/pelagornis/plcommand", from: "1.2.1")
+        .package(url: "https://github.com/pelagornis/plcommand", from: "1.2.5"),
+        .package(url: "https://github.com/pelagornis/plfile", from: "1.0.6")
     ],
     targets: targets
 )
