@@ -10,6 +10,8 @@ private enum DesignTuist {
             try? ProcessEnv.setVar(Constants.EnvironmentVariables.verbose, value: "true")
         }
 
+        DesignTuistSupport.LogOutput.bootstrap()
+        
         await DesignTuistCommand.main()
     }
 }
