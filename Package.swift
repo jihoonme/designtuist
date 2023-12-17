@@ -11,7 +11,8 @@ var targets: [Target] = [
         dependencies: [
             "DesignTuistKit",
             argumentParserDependency
-        ]
+        ],
+        path: "Commands/Sources/dt"
     ),
     .target(
         name: "DesignTuistKit",
@@ -19,7 +20,8 @@ var targets: [Target] = [
             swiftToolsSupportDependency,
             argumentParserDependency,
             "DesignTuistSupport"
-        ]
+        ],
+        path: "Commands/Sources/DesignTuistKit"
     ),
     .target(
         name: "DesignTuistSupport",
@@ -27,11 +29,13 @@ var targets: [Target] = [
             swiftToolsSupportDependency,
             argumentParserDependency,
             loggingDependency
-        ]
+        ],
+        path: "Commands/Sources/DesignTuistSupport"
     ),
     .testTarget(
         name: "DesignTuistCLITests",
-        dependencies: ["dt"]
+        dependencies: ["dt"],
+        path: "Commands/Tests/DesignTuistCLITests"
     ),
 ]
 
