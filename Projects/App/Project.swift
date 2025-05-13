@@ -1,35 +1,21 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 import TuistUI
-import Microfeature
 
-let project = DesignTuistApp().makeModule()
+let project = App().module()
 
-struct DesignTuistApp: Module {
-    @ModuleEnvironment var env = AppEnvironment()
+struct App: Module {
+    @Constant var env = AppEnvironment()
 
     var body: some Module {
         Project {
-            Target(
-                name: typeName,
-                destinations: env.destinations,
-                product: .app,
-                bundleId: "\(env.organizationName).\(typeName)",
-                deploymentTargets: env.deploymentTargets,
-                infoPlist: .file(path: "Support/Info.plist"),
-                sources: ["Sources/**"],
-                resources: ["Resources/**"],
-                settings: .settings(base: env.base)
-            )
+            Interface(name: typeName)
         }
         .organizationName(env.organizationName)
         .settings(.settings(
             base: env.base,
-            configurations: env.appConfiguration,
+            configurations: env.configuration.configure(into: .app),
             defaultSettings: .recommended
         ))
-        .scheme {
-            Scheme.allSchemes(for: [typeName])
-        }
     }
 }

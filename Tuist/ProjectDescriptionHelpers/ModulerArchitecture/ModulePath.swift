@@ -1,8 +1,6 @@
-//
-//  ModulePath.swift
-//  AppManifests
-//
-//  Created by Jihoonahn on 5/13/25.
-//
-
-import Foundation
+public enum ModulePaths {
+    case feature
+    case domain
+    case core
+    case shared
+}

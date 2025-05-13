@@ -1,9 +1,9 @@
 import ProjectDescription
 import TuistUI
 
-let workspace = DesignTuistApp().makeModule()
+let workspace = App().module()
 
-struct DesignTuistApp: Module {
+struct App: Module {
     var body: some Module {
         Workspace {
             Path("Projects/App")
