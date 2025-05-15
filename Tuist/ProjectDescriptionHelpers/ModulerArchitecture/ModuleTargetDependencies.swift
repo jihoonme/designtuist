@@ -1,8 +1,40 @@
-//
-//  TargetDependency.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by Jihoonahn on 5/15/25.
-//
+import ProjectDescription
 
-import Foundation
+public extension TargetDependency {
+    static func feature(
+        target: String,
+        type: MicroTargetType = .sources
+    ) -> TargetDependency {
+        .project(
+            target: "\(target)\(type.rawValue)",
+            path: .relativeToFeature(target),
+        )
+    }
+    static func domain(
+        target: String,
+        type: MicroTargetType = .sources
+    ) -> TargetDependency {
+        .project(
+            target: "\(target)\(type.rawValue)",
+            path: .relativeToDomain(target),
+        )
+    }
+    static func core(
+        target: String,
+        type: MicroTargetType = .sources
+    ) -> TargetDependency {
+        .project(
+            target: "\(target)\(type.rawValue)",
+            path: .relativeToCore(target),
+        )
+    }
+    static func shared(
+        target: String,
+        type: MicroTargetType = .sources
+    ) -> TargetDependency {
+        .project(
+            target: "\(target)\(type.rawValue)",
+            path: .relativeToShared(target),
+        )
+    }
+}
