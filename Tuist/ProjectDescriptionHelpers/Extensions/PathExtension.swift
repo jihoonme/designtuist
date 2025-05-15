@@ -7,6 +7,9 @@ public extension ProjectDescription.Path {
     static func relativeToProjects(_ path: String) -> Self {
         return .relativeToRoot("Projects/\(path)")
     }
+    static func relativeToConfiguration(_ path: String) -> Self {
+        return .relativeToRoot("Configuration/\(path)")
+    }
     static func relativeToFeature(_ path: String) -> Self {
         return .relativeToRoot("Projects/Feature/\(path)")
     }
