@@ -9,11 +9,26 @@ struct App: Module {
 
     var body: some Module {
         Project {
-            Interface(name: typeName)
+            Interface(
+                name: typeName,
+                dependencies: [
+                    .feature(
+                        target: typeName,
+                        type: .interface
+                    )
+                ]
+            )
+            Sources(
+                name: typeName,
+                dependencies: [
+                    .feature(target: typeName)
+                ]
+            )
+            
         }
         .organizationName(env.organizationName)
         .settings(.settings(
-            base: env.base,
+            base: env.baseSettings,
             configurations: env.configuration.configure(into: .app),
             defaultSettings: .recommended
         ))
