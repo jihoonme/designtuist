@@ -10,7 +10,7 @@ public struct Tests: TargetConvertable {
     public init(
         name: String,
         configuration target: AppConfiguration.XCConfigTarget = .shared,
-        dependencies: [TargetDependency]
+        dependencies: [TargetDependency] = []
     ) {
         self.name = name + "Tests"
         self.target = target
@@ -24,6 +24,7 @@ public struct Tests: TargetConvertable {
             product: .unitTests,
             bundleId: "\(env.organizationName).\(name)",
             sources: .unitTests,
+            dependencies: dependencies,
             settings: .settings(
                 base: env.baseSettings,
                 configurations: env.configuration.configure(into: target),

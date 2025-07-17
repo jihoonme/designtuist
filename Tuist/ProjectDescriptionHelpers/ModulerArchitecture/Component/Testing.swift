@@ -24,6 +24,7 @@ public struct Testing: TargetConvertable {
             product: .framework,
             bundleId: "\(env.organizationName).\(name)",
             sources: .testing,
+            dependencies: dependencies,
             settings: .settings(
                 base: env.baseSettings,
                 configurations: env.configuration.configure(into: target),

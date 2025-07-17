@@ -24,6 +24,7 @@ public struct UITests: TargetConvertable {
             product: .uiTests,
             bundleId: "\(env.organizationName).\(name)",
             sources: .uiTests,
+            dependencies: dependencies,
             settings: .settings(
                 base: env.baseSettings,
                 configurations: env.configuration.configure(into: target),

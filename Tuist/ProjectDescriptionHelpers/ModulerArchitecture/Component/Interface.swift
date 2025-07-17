@@ -24,6 +24,7 @@ public struct Interface: TargetConvertable {
             product: .framework,
             bundleId: "\(env.organizationName).\(name)",
             sources: .interface,
+            dependencies: dependencies,
             settings: .settings(
                 base: env.baseSettings,
                 configurations: env.configuration.configure(into: target),
