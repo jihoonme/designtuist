@@ -9,22 +9,19 @@ struct App: Module {
 
     var body: some Module {
         Project {
-            Interface(
-                name: typeName,
-                dependencies: [
-                    .feature(
-                        target: typeName,
-                        type: .interface
-                    )
-                ]
-            )
             Sources(
                 name: typeName,
+                product: .app,
+                infoPlist: .file(path: "Support/Info.plist"),
+                resources: ["Resources/**"],
+                configuration: .app,
                 dependencies: [
-                    .feature(target: typeName)
+                    .feature(target: "BaseFeature"),
+                    .domain(target: "BaseDomain"),
+                    .core(target: "CoreNetwork"),
+                    .shared(target: "Shared")
                 ]
             )
-            
         }
         .organizationName(env.organizationName)
         .settings(.settings(
@@ -32,5 +29,19 @@ struct App: Module {
             configurations: env.configuration.configure(into: .app),
             defaultSettings: .recommended
         ))
+        .scheme {
+            Scheme.makeScheme(
+                name: typeName,
+                target: .dev
+            )
+            Scheme.makeScheme(
+                name: typeName,
+                target: .stage
+            )
+            Scheme.makeScheme(
+                name: typeName,
+                target: .prod
+            )
+        }
     }
 }
