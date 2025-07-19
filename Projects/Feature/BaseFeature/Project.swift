@@ -7,7 +7,7 @@ let project = BaseFeature().module()
 struct BaseFeature: Module {
 
     var body: some Module {
-        ProjectContainer(name: typeName, target: .feature) {
+        ProjectContainer(name: typeName, target: .Feature) {
             Sources(name: typeName)
             Tests(name: typeName, dependencies: [
                 .feature(target: typeName)

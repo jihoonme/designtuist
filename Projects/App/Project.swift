@@ -14,7 +14,7 @@ struct App: Module {
                 product: .app,
                 infoPlist: .file(path: "Support/Info.plist"),
                 resources: ["Resources/**"],
-                configuration: .app,
+                configuration: .App,
                 dependencies: [
                     .feature(target: "BaseFeature"),
                     .domain(target: "BaseDomain"),
@@ -26,7 +26,7 @@ struct App: Module {
         .organizationName(env.organizationName)
         .settings(.settings(
             base: env.baseSettings,
-            configurations: env.configuration.configure(into: .app),
+            configurations: env.configuration.configure(into: .App),
             defaultSettings: .recommended
         ))
         .scheme {

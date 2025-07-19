@@ -8,7 +8,7 @@ struct CoreNetwork: Module {
     var body: some Module {
         ProjectContainer(
             name: typeName,
-            target: .core
+            target: .Core
         ) {
             Sources(name: typeName)
             Tests(

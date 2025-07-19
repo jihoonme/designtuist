@@ -8,7 +8,7 @@ struct BaseDomain: Module {
     var body: some Module {
         ProjectContainer(
             name: typeName,
-            target: .domain
+            target: .Domain
         ) {
             Sources(
                 name: typeName,
