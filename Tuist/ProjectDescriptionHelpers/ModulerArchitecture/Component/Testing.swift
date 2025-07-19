@@ -9,7 +9,7 @@ public struct Testing: TargetConvertable {
 
     public init(
         name: String,
-        configuration target: AppConfiguration.XCConfigTarget = .shared,
+        configuration target: AppConfiguration.XCConfigTarget = .Shared,
         dependencies: [TargetDependency]
     ) {
         self.name = name + "Testing"

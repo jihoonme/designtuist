@@ -3,23 +3,23 @@ import TuistUI
 
 public struct AppConfiguration: XCConfig {
     public enum XCConfigTarget: String, XCConfigTargetType {
-        case app
-        case domain
-        case feature
-        case core
-        case shared
+        case App
+        case Domain
+        case Feature
+        case Core
+        case Shared
 
         public func path(for config: ConfigurationName) -> ProjectDescription.Path {
             switch self {
-            case .app:
+            case .App:
                 return .relativeToConfiguration("App/\(config.rawValue).xcconfig")
-            case .domain:
+            case .Domain:
                 return .relativeToConfiguration("Domain/\(config.rawValue).xcconfig")
-            case .feature:
+            case .Feature:
                 return .relativeToConfiguration("Feature/\(config.rawValue).xcconfig")
-            case .core:
+            case .Core:
                 return .relativeToConfiguration("Core/\(config.rawValue).xcconfig")
-            case .shared:
+            case .Shared:
                 return .relativeToConfiguration("Shared/\(config.rawValue).xcconfig")
             }
         }
@@ -28,31 +28,31 @@ public struct AppConfiguration: XCConfig {
     public var body: some XCConfigOf<Self> {
         Configure({
             switch $0 {
-            case .app:
+            case .App:
                 return [
                     .debug(name: .dev, xcconfig: $0.path(for: .dev)),
                     .debug(name: .stage, xcconfig: $0.path(for: .stage)),
                     .release(name: .prod, xcconfig: $0.path(for: .prod))
                 ]
-            case .domain:
+            case .Domain:
                 return [
                     .debug(name: .dev, xcconfig: $0.path(for: .dev)),
                     .debug(name: .stage, xcconfig: $0.path(for: .stage)),
                     .release(name: .prod, xcconfig: $0.path(for: .prod))
                 ]
-            case .feature:
+            case .Feature:
                 return [
                     .debug(name: .dev, xcconfig: $0.path(for: .dev)),
                     .debug(name: .stage, xcconfig: $0.path(for: .stage)),
                     .release(name: .prod, xcconfig: $0.path(for: .prod))
                 ]
-            case .core:
+            case .Core:
                 return [
                     .debug(name: .dev, xcconfig: $0.path(for: .dev)),
                     .debug(name: .stage, xcconfig: $0.path(for: .stage)),
                     .release(name: .prod, xcconfig: $0.path(for: .prod))
                 ]
-            case .shared:
+            case .Shared:
                 return [
                     .debug(name: .dev, xcconfig: $0.path(for: .dev)),
                     .debug(name: .stage, xcconfig: $0.path(for: .stage)),

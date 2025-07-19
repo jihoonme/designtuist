@@ -15,7 +15,7 @@ public struct Sources: TargetConvertable {
         product: Product = .staticLibrary,
         infoPlist: InfoPlist = .default,
         resources: ResourceFileElements = [],
-        configuration target: AppConfiguration.XCConfigTarget = .shared,
+        configuration target: AppConfiguration.XCConfigTarget = .Shared,
         dependencies: [TargetDependency] = []
     ) {
         self.name = name
