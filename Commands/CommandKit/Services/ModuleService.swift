@@ -9,6 +9,7 @@ public final class ModuleService {
     
     public func run(path: String?) throws {
         let path = self.path(to: path)
+        runningGenerateModule(path: path)
     }
 
     // Mark: - Helper
@@ -20,5 +21,8 @@ public final class ModuleService {
             return Path.current
         }
     }
+    
+    private func runningGenerateModule(path: Path) {
+        print("")
+    }
 }
-

@@ -32,7 +32,25 @@ public final class CleanService {
         }
     }
 
-    private func fetchClean(path: Path) {
-    
+    private func cleanXcodeProject(path: Path) {
+        let folder = try? Folder(path: path)
+
+        let targets = folder?.allFiles(recursive: true).filter {
+            $0.extension == "xcodeproj" || $0.extension == "xcworkspace"
+        }
+
+        if let _ = targets?.isEmpty {
+            logger.info("ℹ️ No .xcodeproj or .xcworkspace directories found.")
+            return
+        }
+
+        targets?.forEach { file in
+            do {
+                try file.delete()
+                logger.info("✅ Removed \(file.name)")
+            } catch {
+                logger.error("❌ Failed to delete \(file.name): \(error)")
+            }
+        }
     }
 }
