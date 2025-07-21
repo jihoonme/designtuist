@@ -1,3 +1,3 @@
 import Logging
 
-let logger = Logger(label: "me.jihoon.command")
+let logger = Logger(label: "me.jihoon.logger")

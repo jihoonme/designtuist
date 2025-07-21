@@ -22,10 +22,13 @@ struct InstallCommand: ParsableCommand {
     var path: String?
     
     func run() throws {
+        LoggingSystem.bootstrap { label in
+            OSLogHandler(label: label)
+        }
+
         try UninstallService().run(
             path: path,
             dependency: dependency,
-            version: version
         )
     }
 }

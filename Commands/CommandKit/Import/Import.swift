@@ -1,8 +1,3 @@
-//
-//  File.swift
-//  designtuist-command
-//
-//  Created by Jihoonahn on 7/20/25.
-//
-
-import Foundation
+@_exported import ArgumentParser
+@_exported import Logging
+@_exported import Command

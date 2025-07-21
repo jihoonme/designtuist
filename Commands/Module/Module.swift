@@ -1,7 +1,16 @@
 import CommandKit
-wa
+
+@main
 struct ModuleCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
-        CommandConfiguration(commandName: "module")
+        CommandConfiguration(
+            commandName: "module"
+        )
+    }
+
+    func run() throws {
+        LoggingSystem.bootstrap { label in
+            OSLogHandler(label: label)
+        }
     }
 }
