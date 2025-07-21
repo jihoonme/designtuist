@@ -13,8 +13,8 @@ public final class UninstallService {
         dependency: String,
     ) throws {
         let path = self.path(to: path)
-        fetchUninstall(path: path, dependency: dependency)
-        fetchUninstallCommand(path: path)
+        uninstallDependency(path: path, dependency: dependency)
+        runUninstallCommand(path: path)
     }
 
     // Mark: - Helper
@@ -27,7 +27,7 @@ public final class UninstallService {
         }
     }
 
-    private func fetchUninstall(
+    private func uninstallDependency(
         path: Path,
         dependency: String
     ) {
@@ -93,7 +93,7 @@ public final class UninstallService {
         }
     }
 
-    private func fetchUninstallCommand(path: Path) {
+    private func runUninstallCommand(path: Path) {
         let path = path.rawValue
         if tuist.install(at: path).errorOutput.isEmpty {
             logger.info("✅ Tuist Uninstall Command successfully")

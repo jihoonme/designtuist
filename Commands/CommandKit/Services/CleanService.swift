@@ -10,7 +10,7 @@ public final class CleanService {
     
     public func run(path: String?) throws {
         let path = self.path(to: path)
-        fetchCleanCommand(path: path)
+        runCleanCommand(path: path)
     }
 
     // Mark: - Helper
@@ -23,7 +23,7 @@ public final class CleanService {
         }
     }
 
-    private func fetchCleanCommand(path: Path) {
+    private func runCleanCommand(path: Path) {
         let path = path.rawValue
         if tuist.clean(at: path).errorOutput.isEmpty {
             logger.info("✅ Tuist Clean Command successfully")

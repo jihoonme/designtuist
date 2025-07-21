@@ -14,8 +14,8 @@ public final class InstallService {
         version: String
     ) throws {
         let path = self.path(to: path)
-        fetchInstall(path: path, dependency: dependency, version: version)
-        fetchInstallCommand(path: path)
+        installDependency(path: path, dependency: dependency, version: version)
+        runInstallCommand(path: path)
     }
 
     // Mark: - Helper
@@ -28,7 +28,7 @@ public final class InstallService {
         }
     }
 
-    private func fetchInstall(
+    private func installDependency(
         path: Path,
         dependency: String,
         version: String
@@ -79,7 +79,7 @@ public final class InstallService {
         }
     }
 
-    private func fetchInstallCommand(path: Path) {
+    private func runInstallCommand(path: Path) {
         let path = path.rawValue
         if tuist.install(at: path).errorOutput.isEmpty {
             logger.info("✅ Tuist Install Command successfully")
