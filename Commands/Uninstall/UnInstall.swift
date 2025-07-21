@@ -1,11 +1,11 @@
 import CommandKit
 
 @main
-struct InstallCommand: ParsableCommand {
+struct UninstallCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
             commandName: "install",
-            abstract: "Install dependency of project in swift package manager"
+            abstract: "Uninstall dependency of project in swift package manager"
         )
     }
     
