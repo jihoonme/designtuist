@@ -11,5 +11,6 @@ struct GenerateCommand: ParsableCommand {
             OSLogHandler(label: label)
         }
 
+        
     }
 }

@@ -82,9 +82,9 @@ public final class InstallService {
     private func fetchInstallCommand(path: Path) {
         let path = path.rawValue
         if tuist.install(at: path).errorOutput.isEmpty {
-            logger.info("✅ Installed successfully")
+            logger.info("✅ Tuist Install Command successfully")
         } else {
-            logger.error("❌ Installed failed")
+            logger.error("❌ Tuist Install Command failed")
         }
     }
 }
