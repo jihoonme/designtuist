@@ -3,7 +3,7 @@ import Command
 import File
 
 public final class UninstallService {
-    @Command(\.bash) var bash
+    @Command(\.tuist) var tuist
     private var folder: Folder!
 
     public init() {}
@@ -14,6 +14,7 @@ public final class UninstallService {
     ) throws {
         let path = self.path(to: path)
         fetchUninstall(path: path, dependency: dependency)
+        fetchUninstallCommand(path: path)
     }
 
     // Mark: - Helper
@@ -91,5 +92,13 @@ public final class UninstallService {
             fatalError("❌ Could not write to Package.swift. Make sure to run this command from within your project root directory.")
         }
     }
-}
 
+    private func fetchUninstallCommand(path: Path) {
+        let path = path.rawValue
+        if tuist.install(at: path).errorOutput.isEmpty {
+            logger.info("✅ Installed successfully")
+        } else {
+            logger.error("❌ Installed failed")
+        }
+    }
+}

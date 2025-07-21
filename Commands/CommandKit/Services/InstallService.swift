@@ -3,7 +3,7 @@ import Command
 import File
 
 public final class InstallService {
-    @Command(\.bash) var bash
+    @Command(\.tuist) var tuist
     private var folder: Folder!
 
     public init() {}
@@ -15,6 +15,7 @@ public final class InstallService {
     ) throws {
         let path = self.path(to: path)
         fetchInstall(path: path, dependency: dependency, version: version)
+        fetchInstallCommand(path: path)
     }
 
     // Mark: - Helper
@@ -75,6 +76,15 @@ public final class InstallService {
             logger.info("✅ Successfully updated Package.swift")
         } else {
             fatalError("❌ Could not write to Package.swift")
+        }
+    }
+
+    private func fetchInstallCommand(path: Path) {
+        let path = path.rawValue
+        if tuist.install(at: path).errorOutput.isEmpty {
+            logger.info("✅ Installed successfully")
+        } else {
+            logger.error("❌ Installed failed")
         }
     }
 }
