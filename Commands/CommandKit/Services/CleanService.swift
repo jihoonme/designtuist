@@ -10,6 +10,7 @@ public final class CleanService {
     
     public func run(path: String?) throws {
         let path = self.path(to: path)
+        cleanXcodeProject(path: path)
         runCleanCommand(path: path)
     }
 
@@ -34,11 +35,11 @@ public final class CleanService {
 
     private func cleanXcodeProject(path: Path) {
         let folder = try? Folder(path: path)
-
+        print("folder: \(String(describing: folder))")
         let targets = folder?.allFiles(recursive: true).filter {
             $0.extension == "xcodeproj" || $0.extension == "xcworkspace"
         }
-
+        print("target: \(String(describing: targets) )")
         if let _ = targets?.isEmpty {
             logger.info("ℹ️ No .xcodeproj or .xcworkspace directories found.")
             return
