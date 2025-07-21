@@ -3,12 +3,13 @@ import Command
 import File
 
 public enum GenerateType: String, ExpressibleByArgument {
-    case `default` = ""
+    case `default`
     case ci = "CI"
     case cd = "CD"
 }
 
 public final class GenerateService {
+    @Command(\.bash) var bash
     
     public init() {}
 
@@ -17,6 +18,7 @@ public final class GenerateService {
         path: String?,
     ) throws {
         let path = self.path(to: path)
+        runGenerateCommand(type: type,path: path)
     }
 
     // Mark: - Helper
@@ -29,5 +31,14 @@ public final class GenerateService {
         }
     }
 
-    private func 
+    private func runGenerateCommand(type: GenerateType, path: Path) {
+        let path = path.rawValue
+        let tuistEnv = type == .default ? "" : "TUIST_ENV=\(type.rawValue)"
+
+        if bash.run("\(tuistEnv) tuist generate", directory: path).errorOutput.isEmpty {
+            logger.info("✅ Tuist Generate Command successfully")
+        } else {
+            logger.error("❌ Tuist Generate Command failed")
+        }
+    }
 }
