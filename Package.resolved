@@ -1,5 +1,5 @@
 {
-  "originHash" : "c7d25af40473596610d7ea7386333638b07c8b6c55f1ed18b37a4bda875ae163",
+  "originHash" : "b573cd8e2782f7cad1194f97bb5eb589f1152d8b260654b81e97ef8dcdce800c",
   "pins" : [
     {
       "identity" : "swift-argument-parser",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pelagornis/swift-file",
       "state" : {
-        "revision" : "d2ca0a93bb0996b6beef69f9cebdaedf8abb93fb",
-        "version" : "1.2.1"
+        "revision" : "c193707fff23617c82c0f04ea2f1ec570a93fe34",
+        "version" : "1.2.3"
       }
     },
     {

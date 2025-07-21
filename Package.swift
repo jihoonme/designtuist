@@ -32,7 +32,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.6.1"),
         .package(url: "https://github.com/apple/swift-log", from: "1.6.3"),
         .package(url: "https://github.com/pelagornis/swift-command", from: "1.3.1"),
-        .package(url: "https://github.com/pelagornis/swift-file", from: "1.2.1"),
+        .package(url: "https://github.com/pelagornis/swift-file", from: "1.2.3"),
     ],
     targets: [
         .executableTarget(
