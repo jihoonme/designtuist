@@ -1,5 +1,5 @@
 {
-  "originHash" : "b573cd8e2782f7cad1194f97bb5eb589f1152d8b260654b81e97ef8dcdce800c",
+  "originHash" : "e89acee817e23f6dadf1ef10ac5542f194300b0b7aa16b93c1bebe01f6486457",
   "pins" : [
     {
       "identity" : "swift-argument-parser",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "309a47b2b1d9b5e991f36961c983ecec72275be3",
         "version" : "1.6.1"
+      }
+    },
+    {
+      "identity" : "swift-cli",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pelagornis/swift-cli",
+      "state" : {
+        "revision" : "de24dbe19edf3a26b0c70486ebde3bf70250bdc3",
+        "version" : "0.1.2"
       }
     },
     {

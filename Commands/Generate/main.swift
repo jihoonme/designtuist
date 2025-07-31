@@ -1,12 +1,18 @@
 import CommandKit
 
 @main
-struct ModuleCommand: ParsableCommand {
+struct GenerateCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
-            commandName: "module"
+            commandName: "generate",
+            abstract: "Generates an Xcode workspace to start working on the project."
         )
     }
+
+    @Argument(
+        help: "Select GenerateType (ex. CI, CD, Default)"
+    )
+    var type: GenerateType = .default
 
     @Option(
         name: .shortAndLong,
@@ -15,11 +21,12 @@ struct ModuleCommand: ParsableCommand {
     )
     var path: String?
 
+    
     func run() throws {
         LoggingSystem.bootstrap { label in
             OSLogHandler(label: label)
         }
 
-        try ModuleService().run(path: path)
+        try GenerateService().run(type: type, path: path)
     }
 }

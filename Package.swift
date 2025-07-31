@@ -33,6 +33,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", from: "1.6.3"),
         .package(url: "https://github.com/pelagornis/swift-command", from: "1.3.1"),
         .package(url: "https://github.com/pelagornis/swift-file", from: "1.2.3"),
+        .package(url: "https://github.com/pelagornis/swift-cli", from: "0.1.2"),
     ],
     targets: [
         .executableTarget(
@@ -64,6 +65,7 @@ let package = Package(
             name: "CommandKit",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "CommandLine", package: "swift-cli"),
                 .product(name: "Command", package: "swift-command"),
                 .product(name: "File", package: "swift-file"),
                 .product(name: "Logging", package: "swift-log")
