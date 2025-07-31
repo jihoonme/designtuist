@@ -15,7 +15,6 @@ To quickly get started with DesignTuist, install the command line tool by first 
 ```
 $ git clone https://github.com/jihoonme/designtuist.git
 $ cd designtuist
-$ make
 ```
 
 ## License
