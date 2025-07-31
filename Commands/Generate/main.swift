@@ -1,6 +1,5 @@
 import CommandKit
 
-@main
 struct GenerateCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
@@ -30,3 +29,5 @@ struct GenerateCommand: ParsableCommand {
         try GenerateService().run(type: type, path: path)
     }
 }
+
+try GenerateCommand().run()

@@ -1,6 +1,5 @@
 import CommandKit
 
-@main
 struct CleanCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
@@ -23,3 +22,5 @@ struct CleanCommand: ParsableCommand {
         try CleanService().run(path: path)
     }
 }
+
+try CleanCommand().run()
