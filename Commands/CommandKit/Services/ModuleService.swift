@@ -126,32 +126,35 @@ public final class ModuleStore: ObservableObject {
         let targetSnippets = selectedMicroFeatureType.map { type in
             switch type.text {
             case "Sources":
-                return "Sources(name: \(name))"
+                return "Sources(name: typeName)"
             case "Interface":
-                return "Interface(name: \(name))"
+                return "Interface(name: typeName)"
             case "Example":
-                return "Example(name: \(name))"
+                return "Example(name: typeName, dependencies: [])"
             case "Tests":
-                return "Tests(name: \(name), dependencies: [])"
+                return "Tests(name: typeName, dependencies: [])"
             case "UITests":
-                return "UITests(name: \(name), dependencies: [])"
+                return "UITests(name: typeName, dependencies: [])"
             default:
                 return ""
             }
         }
 
-        let rawTargetCode = targetSnippets.joined(separator: ", ")
+        let rawTargetCode = targetSnippets.joined(separator: "\n    ")
 
         let quotedTargetCode = "\"\(rawTargetCode)\""
         
-        tuist.scaffold(
-            at: path,
-            "Module",
-            [
-                "--name", name,
-                "--layer", selectedLayer.text,
-                "--target", quotedTargetCode
-            ]
+        print(
+            tuist.scaffold(
+                at: path,
+                "Module",
+                [
+                    "--name", name,
+                    "--layer", selectedLayer.text,
+                    "--target", quotedTargetCode
+                ]
+            )
+            .errorOutput
         )
 
         selectedMicroFeatureType.forEach { type in
