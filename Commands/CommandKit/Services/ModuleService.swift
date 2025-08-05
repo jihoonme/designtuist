@@ -140,7 +140,7 @@ public final class ModuleStore: ObservableObject {
             }
         }
 
-        let rawTargetCode = targetSnippets.joined(separator: "\n    ")
+        let rawTargetCode = targetSnippets.joined(separator: "\n            ")
 
         let quotedTargetCode = "\"\(rawTargetCode)\""
         
