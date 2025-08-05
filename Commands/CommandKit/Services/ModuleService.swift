@@ -144,17 +144,14 @@ public final class ModuleStore: ObservableObject {
 
         let quotedTargetCode = "\"\(rawTargetCode)\""
         
-        print(
-            tuist.scaffold(
-                at: path,
-                "Module",
-                [
-                    "--name", name,
-                    "--layer", selectedLayer.text,
-                    "--target", quotedTargetCode
-                ]
-            )
-            .errorOutput
+        tuist.scaffold(
+            at: path,
+            "Module",
+            [
+                "--name", name,
+                "--layer", selectedLayer.text,
+                "--target", quotedTargetCode
+            ]
         )
 
         selectedMicroFeatureType.forEach { type in
