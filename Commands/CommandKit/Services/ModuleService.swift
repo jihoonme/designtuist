@@ -3,7 +3,6 @@ import Command
 import CommandLine
 import File
 
-
 @MainActor
 public struct ModuleView: View {
     
@@ -82,6 +81,7 @@ public final class ModuleStore: ObservableObject {
         MicroFeatureType(text: "Sources"),
         MicroFeatureType(text: "Interface"),
         MicroFeatureType(text: "Example"),
+        MicroFeatureType(text: "Testing"),
         MicroFeatureType(text: "Tests"),
         MicroFeatureType(text: "UITests"),
     ]
@@ -131,6 +131,8 @@ public final class ModuleStore: ObservableObject {
                 return "Interface(name: typeName)"
             case "Example":
                 return "Example(name: typeName, dependencies: [])"
+            case "Testing":
+                return "Testing(name: typeName, dependencies: [])"
             case "Tests":
                 return "Tests(name: typeName, dependencies: [])"
             case "UITests":
