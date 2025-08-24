@@ -1,13 +1,19 @@
 import CommandKit
 
-struct CleanCommand: ParsableCommand {
+@main
+struct GenerateCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
-            commandName: "clean",
-            abstract: "Clean Command for Tuist"
+            commandName: "generate",
+            abstract: "Generates an Xcode workspace to start working on the project."
         )
     }
-    
+
+    @Argument(
+        help: "Select GenerateType (ex. CI, CD, Default)"
+    )
+    var type: GenerateType = .default
+
     @Option(
         name: .shortAndLong,
         help: "Path to the project directory",
@@ -15,12 +21,12 @@ struct CleanCommand: ParsableCommand {
     )
     var path: String?
 
+    
     func run() throws {
         LoggingSystem.bootstrap { label in
             OSLogHandler(label: label)
         }
-        try CleanService().run(path: path)
+
+        try GenerateService().run(type: type, path: path)
     }
 }
-
-try CleanCommand().run()

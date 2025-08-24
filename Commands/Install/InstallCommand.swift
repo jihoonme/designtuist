@@ -1,5 +1,6 @@
 import CommandKit
 
+@main
 struct InstallCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
@@ -38,5 +39,3 @@ struct InstallCommand: ParsableCommand {
         )
     }
 }
-
-try InstallCommand().run()

@@ -1,5 +1,6 @@
 import CommandKit
 
+@main
 struct UninstallCommand: ParsableCommand {
     static var configuration: CommandConfiguration {
         CommandConfiguration(
@@ -31,5 +32,3 @@ struct UninstallCommand: ParsableCommand {
         )
     }
 }
-
-try UninstallCommand().run()
