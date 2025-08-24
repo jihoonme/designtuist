@@ -11,7 +11,7 @@ struct Shared: Module {
             Tests(
                 name: typeName,
                 dependencies: [
-                    .shared(target: typeName)
+                    .shared()
                 ]
             )
         }

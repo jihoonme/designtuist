@@ -19,7 +19,7 @@ struct App: Module {
                     .feature(target: "BaseFeature"),
                     .domain(target: "BaseDomain"),
                     .core(target: "CoreNetwork"),
-                    .shared(target: "Shared")
+                    .shared()
                 ]
             )
         }
