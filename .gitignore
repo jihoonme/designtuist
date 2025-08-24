@@ -63,6 +63,7 @@ DerivedData/
 *.xcworkspace
 
 ### Package ###
+Tuist/.build
 /.build
 .swiftpm
 
