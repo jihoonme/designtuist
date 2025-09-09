@@ -23,6 +23,8 @@ public struct Interface: TargetConvertable {
             destinations: env.destinations,
             product: .framework,
             bundleId: "\(env.organizationName).\(name)",
+            deploymentTargets: env.deploymentTargets,
+            infoPlist: .default,
             sources: .interface,
             dependencies: dependencies,
             settings: .settings(
