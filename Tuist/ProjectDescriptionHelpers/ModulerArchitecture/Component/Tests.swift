@@ -23,6 +23,8 @@ public struct Tests: TargetConvertable {
             destinations: env.destinations,
             product: .unitTests,
             bundleId: "\(env.organizationName).\(name)",
+            deploymentTargets: env.deploymentTargets,
+            infoPlist: .default,
             sources: .unitTests,
             dependencies: dependencies,
             settings: .settings(
