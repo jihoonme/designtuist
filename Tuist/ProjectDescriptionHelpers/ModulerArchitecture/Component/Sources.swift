@@ -4,6 +4,7 @@ import TuistUI
 public struct Sources: TargetConvertable {
     let env = AppEnvironment()
     let name: String
+    let destinations: Destinations
     let product: Product
     let infoPlist: InfoPlist
     let resources: ResourceFileElements
@@ -19,6 +20,7 @@ public struct Sources: TargetConvertable {
         dependencies: [TargetDependency] = []
     ) {
         self.name = name
+        self.destinations = env.destinations
         self.product = product
         self.infoPlist = infoPlist
         self.resources = resources
@@ -26,12 +28,31 @@ public struct Sources: TargetConvertable {
         self.dependencies = dependencies
     }
 
+    public init(
+        name: String,
+        destinations: Destinations,
+        product: Product = .staticLibrary,
+        infoPlist: InfoPlist = .default,
+        resources: ResourceFileElements = [],
+        configuration target: AppConfiguration.XCConfigTarget = .Shared,
+        dependencies: [TargetDependency] = []
+    ) {
+        self.name = name
+        self.destinations = destinations
+        self.product = product
+        self.infoPlist = infoPlist
+        self.resources = resources
+        self.target = target
+        self.dependencies = dependencies
+    }
+    
     public func build() -> ProjectDescription.Target {
         return Target(
             name: name,
-            destinations: env.destinations,
+            destinations: destinations,
             product: product,
             bundleId: "\(env.organizationName).\(name)",
+            deploymentTargets: env.deploymentTargets,
             infoPlist: infoPlist,
             sources: .sources,
             resources: resources,
