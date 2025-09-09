@@ -23,6 +23,7 @@ public struct Example: TargetConvertable {
             destinations: env.destinations,
             product: .app,
             bundleId: "\(env.organizationName).\(name)",
+            deploymentTargets: env.deploymentTargets,
             infoPlist: .extendingDefault(with: [
                 "UIMainStoryboardFile": "",
                 "UILaunchStoryboardName": "LaunchScreen",
