@@ -16,7 +16,7 @@ private let template = Template(
         ),
         .file(
             path: "Projects/\(layer)/\(name)/UITests/UITests.swift",
-            templatePath: "UITests.swift"
+            templatePath: "UITests.stencil"
         )
     ]
 )
