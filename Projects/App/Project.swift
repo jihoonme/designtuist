@@ -12,8 +12,9 @@ struct App: Module {
             Sources(
                 name: typeName,
                 product: .app,
-                infoPlist: .file(path: "Support/Info.plist"),
-                resources: ["Resources/**"],
+                infoPlist: .file(path: "iOS/Support/Info.plist"),
+                sources: "iOS/Sources/**",
+                resources: ["iOS/Resources/**"],
                 configuration: .App,
                 dependencies: [
                     .feature(target: "BaseFeature"),
