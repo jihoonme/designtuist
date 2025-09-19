@@ -1,0 +1,11 @@
+import SwiftUI
+
+@main
+struct ExampleApp: App {
+
+    init() {}
+
+    var body: some Scene {
+        WindowGroup {}
+    }
+}
