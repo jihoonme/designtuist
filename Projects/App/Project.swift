@@ -52,7 +52,7 @@ struct App: Module {
             Scheme.scheme(
                 name: "\(typeName)-prod",
                 shared: true,
-                buildAction: .buildAction(targets: ["\(typeName)", "\(typeName)Widget"]),
+                buildAction: .buildAction(targets: ["\(typeName)"]),
                 runAction: .runAction(configuration: .prod),
                 archiveAction: .archiveAction(configuration: .prod),
                 profileAction: .profileAction(configuration: .prod),
