@@ -2,11 +2,8 @@ import ProjectDescription
 import Foundation
 import TuistUI
 
-/// Custom Project for DesignTuist (using ModularArchitecture)
 public struct ProjectContainer<Content>: Module where Content: TargetConvertable {
-    /// Allows project modifier to be made to a given Project Type.
     @Constant var env = AppEnvironment()
-
     public let projectModifier = ProjectModifier()
 
     public init(
@@ -17,9 +14,11 @@ public struct ProjectContainer<Content>: Module where Content: TargetConvertable
         fileHeaderTemplate: FileHeaderTemplate? = nil,
         additionalFiles: [FileElement] = [],
         resourceSynthesizers: [ResourceSynthesizer] = .default,
+        hasExampleTarget: Bool? = nil,
+        hasSourceTarget: Bool? = nil,
+        hasTestTarget: Bool? = nil,
         @TargetBuilder content: () -> [Content]
     ) {
-        
         projectModifier.targets = content().map { $0.build() }
         projectModifier.organizationName = env.organizationName
         projectModifier.options = options
@@ -27,13 +26,47 @@ public struct ProjectContainer<Content>: Module where Content: TargetConvertable
         projectModifier.fileHeaderTemplate = fileHeaderTemplate
         projectModifier.additionalFiles = additionalFiles
         projectModifier.resourceSynthesizers = resourceSynthesizers
-        projectModifier.settings = .settings(configurations: env.configuration.configure(into: xcconfig))
+        projectModifier.settings = .settings(
+            base: env.baseSettings
+                .merging(
+                    SettingsDictionary()
+                        .codeSignIdentityAppleDevelopment()
+                        .automaticCodeSigning(devTeam: env.devTeam)
+                ),
+            configurations: env.configuration.configure(into: xcconfig),
+            defaultSettings: .recommended
+        )
+
+        let targetNames = projectModifier.targets.map { $0.name }
+
+        let hasExample = hasExampleTarget ?? targetNames.contains { $0.contains("Example") }
+        let hasSource = hasSourceTarget ?? targetNames.contains(name)
+        let hasTest = hasTestTarget ?? targetNames.contains { $0.contains("Tests") }
+
         projectModifier.schemes = projectModifier.targets.flatMap {
             $0.build().product == .app ? [
-                Scheme.makeScheme(name: name, hasExampleTarget: false, target: .dev),
-                Scheme.makeScheme(name: name, hasExampleTarget: true, target: .dev),
+                Scheme.makeScheme(
+                    name: name,
+                    hasExampleTarget: hasExample,
+                    hasSourceTarget: hasSource,
+                    hasTestTarget: hasTest,
+                    target: .dev
+                ),
+                Scheme.makeScheme(
+                    name: name,
+                    hasExampleTarget: hasExample,
+                    hasSourceTarget: hasSource,
+                    hasTestTarget: hasTest,
+                    target: .prod
+                )
             ] : [
-                Scheme.makeScheme(name: name, hasExampleTarget: false, target: .dev)
+                Scheme.makeScheme(
+                    name: name,
+                    hasExampleTarget: hasExample,
+                    hasSourceTarget: hasSource,
+                    hasTestTarget: hasTest,
+                    target: .dev
+                )
             ]
         }
     }
@@ -43,7 +76,7 @@ public struct ProjectContainer<Content>: Module where Content: TargetConvertable
         let project = projectModifier.build()
         return AnyModule(module: .project(project))
     }
-    
+
     public var body: Never {
         neverModule("ProjectContainer")
     }

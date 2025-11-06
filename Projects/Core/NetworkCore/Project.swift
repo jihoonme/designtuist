@@ -2,16 +2,19 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 import TuistUI
 
-let project = Shared().module()
+let project = NetworkCore().module()
 
-struct Shared: Module {
+struct NetworkCore: Module {
     var body: some Module {
-        ProjectContainer(name: typeName, target: .Shared) {
+        ProjectContainer(
+            name: typeName,
+            target: .Core
+        ) {
             Sources(name: typeName)
             Tests(
                 name: typeName,
                 dependencies: [
-                    .shared()
+                    .core(target: typeName)
                 ]
             )
         }

@@ -19,8 +19,8 @@ struct App: Module {
                 dependencies: [
                     .feature(target: "BaseFeature"),
                     .domain(target: "BaseDomain"),
-                    .core(target: "CoreNetwork"),
-                    .shared()
+                    .core(target: "NetworkCore"),
+                    .shared(target: "Utility")
                 ]
             )
         }
@@ -31,17 +31,32 @@ struct App: Module {
             defaultSettings: .recommended
         ))
         .scheme {
-            Scheme.makeScheme(
-                name: typeName,
-                target: .dev
+            Scheme.scheme(
+                name: "\(typeName)-dev",
+                shared: true,
+                buildAction: .buildAction(targets: ["\(typeName)"]),
+                runAction: .runAction(configuration: .dev),
+                archiveAction: .archiveAction(configuration: .dev),
+                profileAction: .profileAction(configuration: .dev),
+                analyzeAction: .analyzeAction(configuration: .dev)
             )
-            Scheme.makeScheme(
-                name: typeName,
-                target: .stage
+            Scheme.scheme(
+                name: "\(typeName)-stage",
+                shared: true,
+                buildAction: .buildAction(targets: ["\(typeName)"]),
+                runAction: .runAction(configuration: .stage),
+                archiveAction: .archiveAction(configuration: .stage),
+                profileAction: .profileAction(configuration: .stage),
+                analyzeAction: .analyzeAction(configuration: .stage)
             )
-            Scheme.makeScheme(
-                name: typeName,
-                target: .prod
+            Scheme.scheme(
+                name: "\(typeName)-prod",
+                shared: true,
+                buildAction: .buildAction(targets: ["\(typeName)", "\(typeName)Widget"]),
+                runAction: .runAction(configuration: .prod),
+                archiveAction: .archiveAction(configuration: .prod),
+                profileAction: .profileAction(configuration: .prod),
+                analyzeAction: .analyzeAction(configuration: .prod)
             )
         }
     }

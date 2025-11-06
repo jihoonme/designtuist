@@ -14,7 +14,5 @@ import PackageDescription
 
 let package = Package(
     name: "Package",
-    dependencies: [
-        
-    ]
+    dependencies: []
 )
